@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
-
 import { useAuth0 } from "@auth0/auth0-react";
 import LogoutButton from "./logout-button";
 import LoginButton from "./login-button";
@@ -45,7 +45,7 @@ const AuthNav = () => {
   );
 };
 
-const NavBar = () => {
+export function NavBar({ user, ...props }) {
   return (
     <Navbar bg="light" expand="md">
       <Container>
@@ -55,6 +55,23 @@ const NavBar = () => {
       </Container>
     </Navbar>
   );
-};
+}
 
-export default NavBar;
+function mapStateToProps(state) {
+  return {
+    // apiCallsInProgress: state.apiCallsInProgress,
+    user: state.user,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      // loadCourses: bindActionCreators(courseActions.loadCourses, dispatch),
+      // loadAuthors: bindActionCreators(authorActions.loadAuthors, dispatch),
+      // deleteCourse: bindActionCreators(courseActions.deleteCourse, dispatch)
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
