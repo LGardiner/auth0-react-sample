@@ -3,7 +3,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
 // const { getAccessTokenSilently } = useAuth0();
 
 export function getUser() {
-  console.log("ayo");
+  //try get user.
   return fetch(`${apiUrl}/api/public-message`)
     .then(handleResponse)
     .catch(handleError);

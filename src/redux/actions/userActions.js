@@ -8,19 +8,15 @@ export function loadUserRatingsSuccess(userRatings) {
 
 export function loadUserRatings() {
   return function (dispatch) {
-    console.log("ayo load user ratings dispatch");
     dispatch(beginApiCall());
     return userApi
-        .getUser()
-        // eslint-ignore-next-line
-        .then((userRatings) => {
-          dispatch(loadUserRatingsSuccess(userRatings));
-        })
-        // eslint-ignore-next-line
-        .catch((error) => {
-          dispatch(apiCallError(error));
-          throw error;
-        });
-    
+      .getUser()
+      .then((userRatings) => {
+        dispatch(loadUserRatingsSuccess(userRatings));
+      })
+      .catch((error) => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
   };
 }

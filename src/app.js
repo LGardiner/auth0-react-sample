@@ -17,9 +17,9 @@ export function App({ loadUserRatings, user, ...props }) {
   }
 
   if (isAuthenticated) {
-    console.log("is auth ayo");
-
-    loadUserRatings().catch((error) => {
+    loadUserRatings().then((response) => {
+      console.log("response ", response);
+    }).catch((error) => {
       alert("Loading authors failed" + error);
     });
   }
