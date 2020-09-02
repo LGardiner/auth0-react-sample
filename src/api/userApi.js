@@ -2,11 +2,12 @@ import { handleResponse, handleError } from "./apiUtils";
 const apiUrl = process.env.REACT_APP_API_URL;
 // const { getAccessTokenSilently } = useAuth0();
 
-export function getUser() {
-  console.log("ayo");
-  return fetch(`${apiUrl}/api/public-message`)
-    .then(handleResponse)
-    .catch(handleError);
+export function getUser(userid) {
+	return fetch(
+		`https://grynmw8v62.execute-api.ap-southeast-2.amazonaws.com/default/getUser?id=${userid}`
+	)
+		.then(handleResponse)
+		.catch(handleError);
 }
 
 // const callSecureApi = async () => {
